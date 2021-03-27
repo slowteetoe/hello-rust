@@ -1,12 +1,8 @@
-use actix_web::App;
-use actix_web::HttpServer;
-use actix_web::HttpResponse;
-use actix_web::Responder;
-use actix_web::{get};
+use actix_web::{get,App,HttpServer,HttpResponse,Responder};
 
 #[get("/")]
 async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hola mundo!")
+    HttpResponse::Ok().body(format!("Hola mundo! (vers. {})", env!("GIT_HASH")))
 }
 
 #[actix_web::main]
